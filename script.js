@@ -93,3 +93,51 @@ Math.min();
 
 new Date();
 Date.now();
+
+// ------------DOM Selectors:
+
+document.getElementById();
+document.getElementsByClassName();
+document.querySelector();
+document.querySelectorAll();
+
+// ------------DOM Events:
+
+click;
+mouseover;
+keydown;
+submit;
+load;
+
+btn.addEventListener("click", () => {});
+
+// ------------ES6 Features:
+
+("let/const");
+("arrow function");
+("template literals");
+("destructuring");
+("spread operator");
+("modules (import/export)");
+
+// ------------Promises & Async:
+
+new Promise((resolve, reject) => {});
+
+async function fetchData() {
+  await fetch(URL);
+}
+
+// ------------Error Handling:
+
+try {
+} catch (error) {
+} finally {
+}
+
+// ------------Local Storage:
+
+localStorage.setItem("key", value);
+localStorage.getItem("key");
+localStorage.removeItem("key");
+localStorage.clear();
