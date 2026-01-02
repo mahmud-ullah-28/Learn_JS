@@ -1,6 +1,5 @@
 # 📘 JavaScript Quick Revision & Practice Guide
 
-
 ---
 
 ## 1️⃣ Variables
@@ -8,7 +7,7 @@
 ```js
 var x = 10;   // function scoped (avoid using in modern JS)
 let y = 20;   // block scoped
-const z = 30; // reassignment করা যাবে না
+const z = 30; // cannot be reassigned
 ```
 
 ```js
@@ -16,24 +15,36 @@ if (true) {
   let a = 5;
   const b = 10;
 }
-// a, b বাইরে থেকে access করা যাবে না
+// a, b cannot be accessed outside the block
 ```
+
+### Common Mistakes
+
+* `const` variable reassign করার চেষ্টা করা
+* `var` দিয়ে block scope আশা করা
+* `let` declare করার আগে ব্যবহার করা
 
 ---
 
 ## 2️⃣ Data Types
 
 ```js
-let num = 10;            // Number
-let text = "Hello";      // String
-let isOk = true;         // Boolean
-let empty = null;        // null
-let notSet;              // undefined
-let obj = { name: "A" };// Object
-let arr = [1, 2, 3];     // Array
-let sym = Symbol("id"); // Symbol
-let big = 123n;          // BigInt
+let num = 10;             // Number
+let text = "Hello";       // String
+let isOk = true;          // Boolean
+let empty = null;         // null
+let notSet;               // undefined
+let obj = { name: "A" }; // Object
+let arr = [1, 2, 3];      // Array
+let sym = Symbol("id");  // Symbol
+let big = 123n;           // BigInt
 ```
+
+### Common Mistakes
+
+* `null` এবং `undefined` এক মনে করা
+* Array কে primitive type ভাবা
+* BigInt এর সাথে Number mix করা
 
 ---
 
@@ -44,14 +55,19 @@ let big = 123n;          // BigInt
 10 + 5; 10 - 5; 10 * 5; 10 / 5; 10 % 3;
 
 // Comparison
-5 == "5";   // true (type check করে না)
-5 === "5";  // false (type check করে)
+5 == "5";   // true (no type check)
+5 === "5";  // false (strict type check)
 
 // Logical
 true && false;
 true || false;
 !true;
 ```
+
+### Common Mistakes
+
+* `==` ব্যবহার করা instead of `===`
+* Truthy / Falsy value না বোঝা
 
 ---
 
@@ -71,6 +87,11 @@ if (age >= 18) {
 // Ternary Operator
 let result = age >= 18 ? "Adult" : "Minor";
 ```
+
+### Common Mistakes
+
+* Condition এর ভিতরে assignment (`=`) করা
+* Nested ternary বেশি ব্যবহার করা
 
 ---
 
@@ -107,19 +128,64 @@ for (let key in { a: 1, b: 2 }) {
 }
 ```
 
+### Common Mistakes
+
+* Infinite loop তৈরি করা
+* Array এ `for...in` ব্যবহার করা
+
 ---
 
-## 6️⃣ Functions
+## 6️⃣ Functions (Detailed)
+
+### Function Declaration
 
 ```js
 function add(a, b) {
   return a + b;
 }
+
+add(2, 3); // 5
 ```
+
+* `function` keyword দিয়ে function শুরু হয়
+* `a, b` হলো parameters
+* `return` function এর output দেয়
+
+### Function Expression
+
+```js
+const add = function (a, b) {
+  return a + b;
+};
+```
+
+### Arrow Function (Important)
+
+```js
+const sum = (a, b) => {
+  return a + b;
+};
+```
+
+**Short version (implicit return):**
 
 ```js
 const sum = (a, b) => a + b;
 ```
+
+🔹 Arrow function এ:
+
+* `function` keyword লাগে না
+* `=>` ব্যবহার করা হয়
+* One-line হলে `return` ও `{}` বাদ দেওয়া যায়
+
+❗ Arrow function এ নিজের `this` থাকে না (important for later)
+
+### Common Mistakes
+
+* `return` লিখতে ভুলে যাওয়া
+* `{}` ব্যবহার করে implicit return আশা করা
+* Arrow function কে constructor হিসেবে ব্যবহার করা
 
 ---
 
@@ -128,10 +194,10 @@ const sum = (a, b) => a + b;
 ```js
 let arr = [1, 2, 3];
 
-arr.push(4);      // add last
-arr.pop();        // remove last
-arr.shift();      // remove first
-arr.unshift(0);   // add first
+arr.push(4);      // add last element
+arr.pop();        // remove last element
+arr.shift();      // remove first element
+arr.unshift(0);   // add first element
 ```
 
 ```js
