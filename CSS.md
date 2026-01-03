@@ -22,11 +22,11 @@ body {
 ## 2️⃣ CSS Selectors
 
 ```css
-p { color: red; }          /* element */
-.box { padding: 10px; }   /* class */
+p { color: red; }            /* element */
+.box { padding: 10px; }     /* class */
 #title { font-size: 24px; } /* id */
 
-div p { color: blue; }    /* descendant */
+div p { color: blue; }      /* descendant */
 ```
 
 ### Common Mistakes
@@ -47,10 +47,7 @@ div p { color: blue; }    /* descendant */
 }
 ```
 
-### Common Mistakes
-
-* Box size হিসাব ভুল করা
-* `box-sizing: border-box` ব্যবহার না করা
+### Best Practice
 
 ```css
 * {
@@ -58,9 +55,16 @@ div p { color: blue; }    /* descendant */
 }
 ```
 
+### Common Mistakes
+
+* Box size হিসাব ভুল করা
+* `box-sizing` ব্যবহার না করা
+
 ---
 
 ## 4️⃣ Display & Position
+
+### Display
 
 ```css
 .block { display: block; }
@@ -68,6 +72,8 @@ div p { color: blue; }    /* descendant */
 .inline-block { display: inline-block; }
 .none { display: none; }
 ```
+
+### Position
 
 ```css
 .relative { position: relative; }
@@ -78,7 +84,7 @@ div p { color: blue; }    /* descendant */
 
 ### Common Mistakes
 
-* `absolute` element এর parent এ `position: relative` না দেওয়া
+* `absolute` element-এর parent এ `position: relative` না দেওয়া
 
 ---
 
@@ -119,7 +125,7 @@ div p { color: blue; }    /* descendant */
 
 ### Common Mistakes
 
-* Flex আর Grid mix করে confuse হওয়া
+* Flexbox আর Grid mix করে confuse হওয়া
 
 ---
 
@@ -134,7 +140,7 @@ div p { color: blue; }    /* descendant */
 
 ### Common Mistakes
 
-* Contrast ignore করা
+* Text–background contrast ignore করা
 
 ---
 
@@ -150,7 +156,7 @@ p {
 
 ### Common Mistakes
 
-* `px` ছাড়া value লেখা
+* `px`, `rem` ছাড়া value লেখা
 
 ---
 
@@ -166,7 +172,7 @@ p {
 
 ### Common Mistakes
 
-* Mobile-first approach follow না করা
+* Mobile‑first approach follow না করা
 
 ---
 
@@ -185,7 +191,7 @@ p {
 
 ### Common Mistakes
 
-* `transition` hover এ দেওয়া
+* `transition` hover এ লেখা
 
 ---
 
@@ -203,9 +209,7 @@ box-shadow
 
 ## 1️⃣2️⃣ CSS Variables (Custom Properties)
 
-CSS Variables ব্যবহার করলে **reusable**, **maintainable** এবং **theme-friendly** CSS লেখা যায়।
-
-### Basic Syntax
+### Define Variables
 
 ```css
 :root {
@@ -215,6 +219,8 @@ CSS Variables ব্যবহার করলে **reusable**, **maintainable** 
   --spacing: 16px;
 }
 ```
+
+### Use Variables
 
 ```css
 body {
@@ -228,16 +234,7 @@ body {
 }
 ```
 
-### Updating Variables
-
-```css
-.card {
-  --card-padding: 20px;
-  padding: var(--card-padding);
-}
-```
-
-### Theme Example (Light / Dark)
+### Theme Example
 
 ```css
 :root {
@@ -260,16 +257,217 @@ body {
 
 * `--` ছাড়া variable define করা
 * `var()` ব্যবহার না করা
-* Scope (local vs global) না বোঝা
-* CSS variable আর SCSS variable গুলিয়ে ফেলা
+* Scope বোঝা না
 
 ---
 
 ## 1️⃣3️⃣ CSS Best Practices
 
-* Class-based styling ব্যবহার করো
+* Class‑based styling ব্যবহার করো
 * Reusable CSS লেখো
 * Inline CSS avoid করো
 * Consistent naming রাখো
 
 ---
+
+## 1️⃣4️⃣ CSS Animations & @keyframes
+
+```css
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.box {
+  animation: fadeIn 1s ease-in-out;
+}
+```
+
+### Common Mistakes
+
+* `@keyframes` name mismatch
+* `animation-duration` না দেওয়া
+* Animation আর transition গুলিয়ে ফেলা
+
+---
+
+## 1️⃣5️⃣ CSS Transform
+
+```css
+.box {
+  transform: rotate(45deg);
+}
+```
+
+### Functions
+
+* `translate(x, y)`
+* `scale(x)`
+* `rotate(deg)`
+* `skew(deg)`
+
+### Common Mistakes
+
+* `px` / `deg` না দেওয়া
+* Transition ছাড়া abrupt transform
+
+---
+
+## 1️⃣6️⃣ CSS Transition (Deep)
+
+```css
+.box {
+  transition: transform 0.3s ease;
+}
+
+.box:hover {
+  transform: scale(1.1);
+}
+```
+
+### Common Mistakes
+
+* Hover এ transition লেখা
+* `all` বেশি ব্যবহার করা
+
+---
+
+## 1️⃣7️⃣ Z‑Index & Stacking Context
+
+```css
+.box1 {
+  position: relative;
+  z-index: 2;
+}
+
+.box2 {
+  position: relative;
+  z-index: 1;
+}
+```
+
+### Notes
+
+* `position` ছাড়া z‑index কাজ করে না
+* Parent stacking context effect ফেলে
+
+---
+
+## 1️⃣8️⃣ Overflow
+
+```css
+.box {
+  overflow: hidden;
+}
+```
+
+### Values
+
+* hidden
+* scroll
+* auto
+* visible
+
+---
+
+## 1️⃣9️⃣ Pseudo Classes & Elements
+
+### Pseudo Classes
+
+```css
+button:hover {
+  background: black;
+}
+```
+
+### Pseudo Elements
+
+```css
+p::before {
+  content: "👉 ";
+}
+```
+
+---
+
+## 2️⃣0️⃣ CSS Specificity & Cascade
+
+Priority Order:
+
+1. Inline
+2. ID
+3. Class
+4. Element
+
+```css
+#title { color: red; }
+.title { color: blue; }
+h1 { color: green; }
+```
+
+---
+
+## 2️⃣1️⃣ CSS Units
+
+```css
+.container {
+  width: 80vw;
+  font-size: 1rem;
+}
+```
+
+### Units
+
+* Absolute: `px`
+* Relative: `%`, `em`, `rem`, `vh`, `vw`
+
+---
+
+## 2️⃣2️⃣ Responsive Images
+
+```css
+img {
+  max-width: 100%;
+  height: auto;
+}
+```
+
+---
+
+## 2️⃣3️⃣ CSS Reset
+
+```css
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+```
+
+---
+
+## 2️⃣4️⃣ Accessibility (Basic)
+
+```css
+button:focus {
+  outline: 2px solid blue;
+}
+```
+
+---
+
+## 2️⃣5️⃣ Performance Tips
+
+* Heavy animation avoid করো
+* `will-change` limited use
+* Large shadow কম ব্যবহার
+
+---
+
+## 2️⃣6️⃣ Final CSS Revision Checklist
+
+* Box Model clear
+* Flexbox confident
+* Grid basic idea
+* Responsive mindset
+* Animation vs Transition clear
